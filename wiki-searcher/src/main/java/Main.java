@@ -13,17 +13,7 @@ import java.net.HttpURLConnection;
 
 public class Main {
 
-    public static class PageType {
-        public String title;
-        public int pageid;
-
-        public PageType(String title, int pageid) {
-            this.title = title;
-            this.pageid = pageid;
-        }
-    }
-
-    public static String getRequest() {
+    private static String getRequest() {
         Scanner in = new Scanner(System.in);
         System.out.print("Введите запрос для Википедии или 0, чтобы выйти: ");
         String question = in.nextLine();
@@ -35,7 +25,7 @@ public class Main {
         return "https://ru.wikipedia.org/w/api.php?action=query&list=search&utf8=&format=json&srsearch=" + question;
     }
 
-    public static List<PageType> parseFromUrl(String request) {
+    private static List<PageType> parseFromUrl(String request) {
         try {
             if (request == null) {
                 return null;
@@ -75,7 +65,7 @@ public class Main {
         }
     }
 
-    public static int getChoice(List<PageType> Pages) {
+    private static int getChoice(List<PageType> Pages) {
         try {
             if (Pages == null) {
                 return -1;
