@@ -1,7 +1,7 @@
 import csv
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree
 from address import Address
-class FileParser:
+class FileParsing:
 
     def __init__(self, file_path):
         self.file_path = file_path
@@ -27,7 +27,7 @@ class FileParser:
     def parse_xml(self):
         #Парсинг XML файла
         try:
-            tree = ET.parse(self.file_path)
+            tree = xml.etree.ElementTree.parse(self.file_path)
             root = tree.getroot()
             for item in root.findall("item"):
                 self.addresses.append(Address(item.get("city"), item.get("street"), item.get("house"), item.get("floor")))

@@ -1,5 +1,5 @@
 import time
-from parser import FileParser
+from parser import FileParsing
 from stats import Statistics
 
 class Searcher:
@@ -11,7 +11,7 @@ class Searcher:
                 break
             try:
                 start_time = time.time()
-                parser = FileParser(input_name)
+                parser = FileParsing(input_name)
                 addresses = parser.parse()
                 if not addresses:
                     print("Файл пустой или с ошибками.")
@@ -19,7 +19,7 @@ class Searcher:
                 statistics = Statistics(addresses)
                 duplicates = statistics.find_duplicates()
                 floor_stats = statistics.floor_statistics()
-                statistics.print_statistics(duplicates, floor_stats)
+                statistics.print_search_results(duplicates, floor_stats)
                 elapsed_time = time.time() - start_time
                 print(f"\nВремя обработки {input_name}: {elapsed_time:.2f} секунд")
             except Exception as e:

@@ -4,5 +4,5 @@ class Address:
         self.street = street
         self.house = int(house)
         self.floor = int(floor)
-    def as_key(self):
+    def object(self):
         return (self.city, self.street, self.house, self.floor)

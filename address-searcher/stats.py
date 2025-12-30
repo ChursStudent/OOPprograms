@@ -6,7 +6,7 @@ class Statistics:
         #Поиск количества дубликатов
         counter = defaultdict(int)
         for address in self.addresses:
-            counter[address.as_key()] += 1
+            counter[address.object()] += 1
         duplicates = {key: count for key, count in counter.items() if count > 1}
         return duplicates
     def floor_statistics(self):
@@ -15,7 +15,7 @@ class Statistics:
         for address in self.addresses:
             stats[address.city][address.floor] += 1
         return stats
-    def print_statistics(self, duplicates, floor_stats):
+    def print_search_results(self, duplicates, floor_stats):
         #Вывод дубликатов и этажей
         print("\nДублирующиеся записи:")
         for (city, street, house, floor), count in duplicates.items():
